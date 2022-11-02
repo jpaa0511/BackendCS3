@@ -10,6 +10,17 @@ export const GetPlataformas = async (): Promise<Plataforma[]> => {
     }
 }
 
+export const PostPlataforma = async (P: Plataforma): Promise<boolean>=> {
+    
+    try {
+       return DaoPlataforma.AgregarPlataforma(P);
+      
+    } catch (error) {
+        throw error;
+    }
+   
+}
+
 
 // export const PostPersona = async (P: Plataforma): Promise<boolean> => {
 //     try {

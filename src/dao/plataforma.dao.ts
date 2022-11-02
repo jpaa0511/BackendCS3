@@ -13,4 +13,18 @@ export const ListarPlataformas = async (): Promise<Plataforma[]> => {
     } catch (error) {
         throw error;
     }
-}
+};
+
+export async function AgregarPlataforma(p: Plataforma):Promise<boolean> {
+    try {
+     let tsql = `Insert into plataforma (Imagen_URL, Nombre, Descripcion, Precio) values ('${p.Imagen_URL}', '${p.Nombre}', '${p.Descripcion}', ${p.Precio})`;
+         const pool = await GetConnection();
+         let rs = await pool.query(tsql);
+         if (rs != undefined) {
+             return rs.rowsAffected.length==1;
+         }
+         return false;
+    } catch (error) {
+     throw error;
+    }
+ };

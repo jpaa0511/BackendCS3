@@ -28,3 +28,17 @@ export async function AgregarPlataforma(p: Plataforma):Promise<boolean> {
      throw error;
     }
  };
+
+ export const EliminarProductos = async (Id: string): Promise<Plataforma[]> => {
+    try {
+        let tsql = `DELETE FROM plataforma where Id = ${Id}`;
+        const pool = await GetConnection();
+        let rs = await pool.query<Plataforma>(tsql);
+        if (rs != undefined) {
+            return rs.recordset;
+        }
+        return [];
+    } catch (error) {
+        throw error;
+    }
+}

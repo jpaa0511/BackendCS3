@@ -21,11 +21,12 @@ export const PostPlataforma = async (P: Plataforma): Promise<boolean>=> {
    
 }
 
+export const EliminarPlataforma = async (Id: string): Promise<Plataforma[]> => {
+    try {
+        let p: Plataforma[] = await DaoPlataforma.EliminarProductos(Id);
+        return p;
+    } catch (error) {
+        throw error;
+    }
+}
 
-// export const PostPersona = async (P: Plataforma): Promise<boolean> => {
-//     try {
-//         return DaoPersona.CrearPersona(P);
-//     } catch (error) {
-//         throw error;
-//     }
-// }

@@ -1,21 +1,32 @@
 import { Plataforma } from "../model/plataforma.model"
+import * as DaoPlataforma from '../dao/plataforma.dao'
 
-export const GetPlataformas = (): Plataforma[] => {
-    let p: Plataforma[] = [];
-    p.push({
-        Id: 1, 
-        Nombre: "netflix",
-        Imagen_URL: "https://onx.la/e459c",
-        Descripcion: "Netflix es buena porque si",
-        Precio: 5000
-    });
-
-    p.push({
-        Id: 2, 
-        Nombre: "Amazon prime",
-        Imagen_URL: "https://onx.la/33425",
-        Descripcion: "amazon es bueno porque si",
-        Precio: 5000
-    });
-    return p;
+export const GetPlataformas = async (): Promise<Plataforma[]> => {
+    try {
+        let p: Plataforma[] = await DaoPlataforma.ListarPlataformas();
+        return p;
+    } catch (error) {
+        throw error;
+    }
 }
+
+export const PostPlataforma = async (P: Plataforma): Promise<boolean>=> {
+    
+    try {
+       return DaoPlataforma.AgregarPlataforma(P);
+      
+    } catch (error) {
+        throw error;
+    }
+   
+}
+
+export const EliminarPlataforma = async (Id: string): Promise<Plataforma[]> => {
+    try {
+        let p: Plataforma[] = await DaoPlataforma.EliminarProductos(Id);
+        return p;
+    } catch (error) {
+        throw error;
+    }
+}
+

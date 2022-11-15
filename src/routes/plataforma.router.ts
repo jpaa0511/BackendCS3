@@ -26,7 +26,7 @@ router.post('/',  Validaciones.ValidateCreate, (req: express.Request, res: expre
     });
 });
 
-router.delete('/:Id', Validaciones.ValidateEliminar, (req: express.Request, res: express.Response) => {
+router.delete('/:Id', (req: express.Request, res: express.Response) => {
     PlataformaController.EliminarPlataforma(req.params.Id)
         .then((obj) => {
             res.json(obj);

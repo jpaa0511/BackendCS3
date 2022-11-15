@@ -23,13 +23,3 @@ export const ValidateCreate = [
         Validar(req, res, next);
     }
 ]
-
-export const ValidateEliminar = [
-    check('Id').exists()
-    .withMessage("La propiedad es requerida")
-    .notEmpty()
-    .withMessage("La propiedad esta vacia"),
-    (req: express.Request, res: express.Response, next: () => any) => {
-        Validar(req, res, next);
-    }
-]
